@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 
 function mapStateToProps(state) {
   return {}
@@ -21,6 +23,9 @@ class Home extends Component {
         <div>
           <button onClick={this.outLogin.bind(this)}>退出登录</button>
         </div>
+        <Link to="/News">
+          <div>点击跳转到新闻页</div>
+        </Link>
       </div>
     );
   }

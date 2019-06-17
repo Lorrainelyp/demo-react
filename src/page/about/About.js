@@ -6,6 +6,7 @@ class About extends Component {
     return (
       <div>
         <h3>关于我们</h3>
+
       </div>
     );
   }

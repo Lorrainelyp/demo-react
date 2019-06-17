@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from "react-router-dom";
 
 function mapStateToProps(state) {
   return {
@@ -35,6 +36,9 @@ class News extends Component {
           }
         </ul>
         <button onClick={this.sortreverse.bind(this)}>倒序显示</button>
+        <Link to="/About">
+          <div>点击跳转到关于我们</div>
+        </Link>
       </div>
     );
   }
