@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+function mapStateToProps(state) {
+  return {
+    list:state.NewsRedux.list
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    sortreverse:function () {
+      dispatch({type:'SORT_REVERSE'})
+    }
+  };
+}
 
 class News extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      list: [
-        {id:1,title:"a",con:"caaaaaaaaaaaaaaaa"},
-        {id:2,title:"b",con:"bbbbbbbbbbb"},
-        {id:3,title:"c",con:"cccccccccccccc"},
-        {id:4,title:"d",con:"ddddddddddddd"},
-        {id:5,title:"e",con:"eeeeeeeeeeee"}
-      ]
-    };
   }
 
   render() {
@@ -21,22 +26,26 @@ class News extends Component {
         <h3>新闻页面</h3>
         <ul>
           {
-            this.state.list.map(function(item){
-              return <li key={item.id}>
-                <a>{item.title}</a>
-                <span>{item.con}</span>
-              </li>
-            })
+            this.props.list.map((item,i)=>
+            <li key={item.id}>
+              <a>{item.title}</a>
+              <span>{item.content}</span>
+            </li>
+            )
           }
         </ul>
+        <button onClick={this.sortreverse.bind(this)}>倒序显示</button>
       </div>
     );
+  }
+
+  sortreverse(){
+    this.props.sortreverse();
   }
 
   componentDidMount() {
     console.log("News渲染完毕")
   }
-
 }
 
-export default News
+export default connect(mapStateToProps,mapDispatchToProps)(News);
