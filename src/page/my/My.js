@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    list:state.AboutRedux.list
+    list:state.MyRedux.list
   }
 }
 
@@ -21,19 +21,19 @@ function mapDispatchToProps(dispatch) {
           {id:5,title:"标题5",content:"你好你好你好你好你好"}
         ];
         dispatch({
-          type: 'FETCH_ABOUTCONTENT',
+          type: 'FETCH_MYCONTENT',
           list:list
         })
       },0)
     }
   };
 }
-class About extends Component {
+class My extends Component {
 
   render() {
     return (
       <div>
-        <h3>关于我们</h3>
+        <h3>我的</h3>
         <ul>
           {
             this.props.list.map((item,i)=>
@@ -55,12 +55,11 @@ class About extends Component {
   }
   componentWillMount() {
     this.fetchContent();
-    // console.log(this.props)
   }
   componentDidMount() {
-    console.log("About渲染完毕")
+    console.log("My渲染完毕")
   }
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(About);
+export default connect(mapStateToProps,mapDispatchToProps)(My);
