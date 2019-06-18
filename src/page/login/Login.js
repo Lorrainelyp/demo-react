@@ -8,6 +8,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     gologin:function (username,password,history) {
+      //模拟ajax
       setTimeout(()=>{
         console.log("username:"+username);
         console.log("password:"+password);
