@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchContent:function () {
+    fetchContent:function (myid) {
       // 模拟ajax
       setTimeout(()=>{
         let list = [
