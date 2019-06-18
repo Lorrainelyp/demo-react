@@ -12,6 +12,22 @@ function mapDispatchToProps(dispatch) {
   return {
     sortreverse:function () {
       dispatch({type:'SORT_REVERSE'})
+    },
+    fetchNewsList:function () {
+      // 模拟ajax
+      setTimeout(()=>{
+        let list = [
+          {id:1,title:"a",content:"aaaaaaaaaaaaaaaa"},
+          {id:2,title:"b",content:"bbbbbbbbbbb"},
+          {id:3,title:"c",content:"cccccccccccccc"},
+          {id:4,title:"d",content:"ddddddddddddd"},
+          {id:5,title:"e",content:"eeeeeeeeeeee"}
+        ];
+        dispatch({
+          type: 'FETCH_NEWSLIST',
+          list:list
+        })
+      },0)
     }
   };
 }
@@ -45,6 +61,13 @@ class News extends Component {
 
   sortreverse(){
     this.props.sortreverse();
+  }
+  fetchNewsList(){
+    this.props.fetchNewsList();
+  }
+
+  componentWillMount() {
+    this.fetchNewsList();
   }
 
   componentDidMount() {

@@ -1,12 +1,6 @@
 //reducer
 var newsinit={
-  list:[
-    {id:1,title:"a",content:"aaaaaaaaaaaaaaaa"},
-    {id:2,title:"b",content:"bbbbbbbbbbb"},
-    {id:3,title:"c",content:"cccccccccccccc"},
-    {id:4,title:"d",content:"ddddddddddddd"},
-    {id:5,title:"e",content:"eeeeeeeeeeee"}
-  ]
+  list:[]
 };
 
 function NewsRedux(state = newsinit, action) {
@@ -18,7 +12,11 @@ function NewsRedux(state = newsinit, action) {
       for(var i=arr.length-1;i>=0;i--){
         arr2.push(arr[i])
       }
-      return Object.assign({},state,{list:arr2})
+      return Object.assign({},state,{list:arr2});
+    case "FETCH_NEWSLIST":
+      //获取新闻列表
+      var listArr = action.list;
+      return Object.assign({},state,{list:listArr});
     default:
       return state
   }
